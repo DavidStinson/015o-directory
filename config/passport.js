@@ -64,10 +64,10 @@ passport.use(
       scope: ["name", "email"],
     },
     function(accessToken, refreshToken, profile, done) {
-      User.findOne({ googleId: profile.id }, function(err, user) {
+      User.findOne({ appleId: profile.id }, function(err, user) {
         if (err) return cb(err);
         if (user) {
-          // we have a new user via OAuth!
+          // we have a new user via Sign In With Apple!
           console.log(profile);
           var newUser = new User({
             name: profile.name.firstName,
@@ -82,9 +82,7 @@ passport.use(
         }
       });
       done(null, {
-        id,
-        email,
-        name: { firstName, lastName },
+        profile,
       });
     }
   )
