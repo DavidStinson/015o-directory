@@ -7,6 +7,10 @@ module.exports = {
 function index(req, res) {
   Tktk.find({}, function(err, tktks) {
     if (err) return next(err);
-    res.render("tktks/index", { tktks });
+    res.render('tktks/index', {
+      tktks,
+      user: req.user,
+      name: req.query.name
+    });
   });
 }

@@ -9,11 +9,29 @@
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~4.1.1",
-    "dotenv": "~8.2.0",
+    "dotenv": "^8.2.0",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "express-session": "^1.17.0",
     "http-errors": "~1.6.3",
     "mongoose": "~5.9.2",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "passport": "^0.4.1",
+    "passport-google-oauth": "^2.0.0"
+  },
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidStinson/015o-directory.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DavidStinson/015o-directory/issues"
+  },
+  "homepage": "https://github.com/DavidStinson/015o-directory#readme",
+  "devDependencies": {
+    "prettier": "1.19.1"
   }
 }

@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/stylesheets/main.css" />
-  <title>Tktks</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title>Tktks</title>
+  </head>
+  <body>
+    <ul class="right">
+      <li>
+        <% if (user) { %>
+          <h1>You're logged in!</h1>
+        <a href="/logout"
+          ><i class="material-icons left">trending_flat</i>Log Out</a
+        >
+        <% } else { %>
+          <h1>You're not logged in!</h1>
+        <a href="/auth/google"
+          ><i class="material-icons left">vpn_key</i>Login with Google</a
+        >
+        <% } %>
+      </li>
+    </ul>
+  </body>
 </html>
