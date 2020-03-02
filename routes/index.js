@@ -11,10 +11,10 @@ router.get("/auth/apple", passport.authenticate("apple"));
 router.post(
   "/auth/apple/callback",
   express.urlencoded({ extended: true }),
-  passport.authenticate("apple"),
-  (req, res) => {
-    res.json(req.user);
-  }
+  passport.authenticate("apple", {
+    successRedirect: "/",
+    failureRedirect: "/users/error",
+  })
 );
 
 router.get(

@@ -15,6 +15,10 @@ passport.use(
     function(accessToken, refreshToken, profile, done) {
       User.findOne({ userId: profile.id }, function(err, user) {
         if (err) return done(err);
+        if (user) {
+          user.avatar = profile.photos[0].value;
+          done(null, user);
+        }
         if (!user) {
           // A new user via Google OAuth!
           console.log(profile);
@@ -23,15 +27,13 @@ passport.use(
             avatar: profile.photos[0].value,
             email: profile.emails[0].value,
             userId: profile.id,
-            oAuthProvider: "Google"
+            oAuthProvider: "Google",
           });
           newUser.save(function(err) {
             if (err) return done(err);
             return done(null, newUser);
           });
         }
-        user.avatar = profile.photos[0].value
-        done(null, user);
       });
     }
   )
@@ -51,6 +53,7 @@ passport.use(
     function(accessToken, refreshToken, profile, done) {
       User.findOne({ userId: profile.id }, function(err, user) {
         if (err) return done(err);
+        if (user) done(null, user);
         if (!user) {
           // we have a new user via Sign In With Apple!
           console.log(profile);
@@ -66,7 +69,6 @@ passport.use(
             return done(null, newUser);
           });
         }
-        done(null, user);
       });
     }
   )
