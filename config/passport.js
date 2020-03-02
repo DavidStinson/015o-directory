@@ -5,16 +5,6 @@ const User = require("../models/user");
 const fs = require("fs");
 const path = require("path");
 
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
-
 passport.use(
   new GoogleStrategy(
     {
@@ -22,31 +12,26 @@ passport.use(
       clientSecret: process.env.GOOGLE_SECRET,
       callbackURL: process.env.GOOGLE_CALLBACK,
     },
-    function(accessToken, refreshToken, profile, cb) {
-      User.findOne({ googleId: profile.id }, function(err, user) {
-        if (err) return cb(err);
-        if (user) {
+    function(accessToken, refreshToken, profile, done) {
+      User.findOne({ userId: profile.id }, function(err, user) {
+        if (err) return done(err);
+        if (!user) {
           // A new user via Google OAuth!
-          if (!user.avatar) {
-            user.avatar = profile.photos[0].value;
-            user.save(function(err) {
-              return cb(null, user);
-            });
-          } else {
-            return cb(null, user);
-          }
           console.log(profile);
           var newUser = new User({
             name: profile.displayName,
+            avatar: profile.photos[0].value,
             email: profile.emails[0].value,
-            googleId: profile.id,
-            appleId: null,
+            userId: profile.id,
+            oAuthProvider: "Google"
           });
           newUser.save(function(err) {
-            if (err) return cb(err);
-            return cb(null, newUser);
+            if (err) return done(err);
+            return done(null, newUser);
           });
         }
+        user.avatar = profile.photos[0].value
+        done(null, user);
       });
     }
   )
@@ -64,26 +49,35 @@ passport.use(
       scope: ["name", "email"],
     },
     function(accessToken, refreshToken, profile, done) {
-      User.findOne({ appleId: profile.id }, function(err, user) {
-        if (err) return cb(err);
-        if (user) {
+      User.findOne({ userId: profile.id }, function(err, user) {
+        if (err) return done(err);
+        if (!user) {
           // we have a new user via Sign In With Apple!
           console.log(profile);
           var newUser = new User({
             name: profile.name.firstName,
+            avatar: null,
             email: profile.email,
-            appleId: profile.id,
-            googleId: null,
+            userId: profile.id,
+            oAuthProvider: "Apple",
           });
           newUser.save(function(err) {
-            if (err) return cb(err);
-            return cb(null, newUser);
+            if (err) return done(err);
+            return done(null, newUser);
           });
         }
-      });
-      done(null, {
-        profile,
+        done(null, user);
       });
     }
   )
 );
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
