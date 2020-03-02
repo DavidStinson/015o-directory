@@ -16,8 +16,14 @@ passport.use(
       User.findOne({ userId: profile.id }, function(err, user) {
         if (err) return done(err);
         if (user) {
-          user.avatar = profile.photos[0].value;
-          done(null, user);
+          if (user.avatar !== profile.photos[0].value) {
+            user.avatar = profile.photos[0].value;
+            user.save(function(err) {
+              return done(null, user);
+            });
+          } else {
+            return done(null, user);
+          }
         }
         if (!user) {
           // A new user via Google OAuth!
