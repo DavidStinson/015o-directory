@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const tktksCtrl = require("../controllers/tktks");
+const networksCtrl = require("../controllers/networks");
 
-router.get("/", tktksCtrl.index);
+router.get("/", networksCtrl.index);
 
 module.exports = router;

@@ -1,5 +1,5 @@
 {
-  "name": "tktks",
+  "name": "networks",
   "main": "./bin/www",
   "version": "0.0.0",
   "private": true,

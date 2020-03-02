@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require("passport");
 
 router.get("/", function(req, res, next) {
-  res.render("index", { title: "Tktk Index" });
+  res.render("index", { title: "Network Index" });
 });
 
 router.get("/auth/apple", passport.authenticate("apple"));
