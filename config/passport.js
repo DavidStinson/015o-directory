@@ -15,7 +15,10 @@ passport.use(
     function(accessToken, refreshToken, profile, done) {
       User.findOne({ userId: profile.id }, function(err, user) {
         if (err) return done(err);
+        // If user is not new, return their stored data
         if (user) {
+          // Only change an avatar pic if a user has changed their Google
+          // avatar since their last visit, reducing db writes.
           if (user.avatar !== profile.photos[0].value) {
             user.avatar = profile.photos[0].value;
             user.save(function(err) {
@@ -24,8 +27,7 @@ passport.use(
           } else {
             return done(null, user);
           }
-        }
-        if (!user) {
+        } else {
           // A new user via Google OAuth!
           console.log(profile);
           var newUser = new User({
@@ -59,9 +61,10 @@ passport.use(
     function(accessToken, refreshToken, profile, done) {
       User.findOne({ userId: profile.id }, function(err, user) {
         if (err) return done(err);
+        // if a user is not new, return their stored data.
         if (user) done(null, user);
+        // if a user is new add them to the db
         if (!user) {
-          // we have a new user via Sign In With Apple!
           console.log(profile);
           var newUser = new User({
             name: profile.name.firstName,
