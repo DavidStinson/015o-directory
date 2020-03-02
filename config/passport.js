@@ -36,6 +36,7 @@ passport.use(
             email: profile.emails[0].value,
             userId: profile.id,
             oAuthProvider: "Google",
+            local: false,
           });
           newUser.save(function(err) {
             if (err) return done(err);
@@ -72,6 +73,7 @@ passport.use(
             email: profile.email,
             userId: profile.id,
             oAuthProvider: "Apple",
+            local: false,
           });
           newUser.save(function(err) {
             if (err) return done(err);

@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema(
     email: String,
     userId: String,
     oAuthProvider: String,
+    local: Boolean,
   },
   {
     timestamps: true,
