@@ -1,59 +1,56 @@
 <%- include('../partials/header') %>
 
-<% if (user) { %>
 <main id="bounding-box">
-	<section id="container">
-	<h1 class="head">Add a network</h1>
-	<form action="/networks" method="POST" class="form-container">
-		<div>
-			<label>Network Name
-				<input 
-					type="text" 
-					name="friendlyName" 
-					class="mono large-input" 
-					required
-				> 
-			</label>
-		</div>
-		<div>
-			<label>Network Address
-				<input 
-					type="text" 
-					pattern="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}" 
-					name="newkAddr"
-					class="mono large-input"
-					required
-				> 
-			</label>
-		</div>
-		<div>
-			<label>CIDR Mask
-				<input 
-					type="number" 
-					name="cidrMask" 
-					class="mono large-input" 
-					min="8" 
-					max="30" 
-					required
-				> 
-			</label>
-		</div>
-		<div>
-			<label>vLAN
-				<input 
-					type="number" 
-					name="vLan" 
-					class="mono large-input" 
-					min="1" 
-					max="4094"
-					value="1"/> 
-			</label>
-		</div>
-	</form>
+	<section id="new-network-container" class="container">
+		<h1 class="head">Add a network</h1>
+		<form action="/networks" method="POST" class="form-container">
+			<div class="input-container">
+				<label class="os">Network Name
+					<input 
+						type="text" 
+						name="friendlyName" 
+						class="mono large-input" 
+						required
+					> 
+				</label>
+			</div>
+			<div class="input-container">
+				<label class="os">Network Address
+					<input 
+						type="text" 
+						pattern="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}" 
+						name="ntwkAddr"
+						class="mono large-input"
+						required
+					> 
+				</label>
+			</div>
+			<div class="input-container">
+				<label class="os">CIDR Mask
+					<input 
+						type="number" 
+						name="cidrMask" 
+						class="mono large-input" 
+						min="8" 
+						max="30" 
+						required
+					> 
+				</label>
+			</div>
+			<div class="input-container">
+				<label class="os">vLAN
+					<input 
+						type="number" 
+						name="vLan" 
+						class="mono large-input" 
+						min="1" 
+						max="4094"
+						value="1"/> 
+				</label>
+			</div>
+			<button type="submit"class="submit-button os">SUBMIT</button>
+		</form>
 	</section>
 </main>
-<% } else { %> 
-	<%-include('../partials/userLogin') %> 
-<% } %>
 
 <%- include('../partials/footer') %>

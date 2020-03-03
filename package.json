@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@nicokaiser/passport-apple": "^0.2.1",
+    "cidr-tools": "^2.2.10",
     "cookie-parser": "~1.4.4",
     "debug": "~4.1.1",
     "dotenv": "^8.2.0",

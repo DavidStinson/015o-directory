@@ -1,21 +1,18 @@
-const Network = require("../models/network");
+const User = require("../models/user");
 const dns = require("dns");
-var Netmask = require('netmask').Netmask
+const Netmask = require("netmask").Netmask;
+const cidrTools = require("cidr-tools");
 
 module.exports = {
   index,
   new: newNetwork,
-  confirm
+  create,
 };
 
 function index(req, res) {
-  Network.find({ userOwner: req.user }, function(err, networks) {
-    if (err) return next(err);
-    res.render("networks/index", {
-      title: "Your Networks",
-      networks,
-      user: req.user,
-    });
+  res.render("networks/index", {
+    title: "Your Networks",
+    user: req.user,
   });
 }
 
@@ -28,6 +25,31 @@ function newNetwork(req, res) {
   });
 }
 
-function confirm(req, res) {
-  console.log(req.body)
+function create(req, res) {
+  req.body.fullNtwk = `${req.body.ntwkAddr}/${req.body.cidrMask}`;
+  let ipBlock = new Netmask(req.body.fullNtwk);
+  req.body.broadcastAddr = ipBlock.broadcast;
+  req.body.firstAddr = ipBlock.first;
+  req.body.lastAddr = ipBlock.last;
+  req.body.ntwkSize = ipBlock.size;
+  req.body.subnetMask = ipBlock.mask;
+  User.findById(req.user._id, (err, user) => {
+    if (err) return next(err);
+    user.networks.forEach(network => {
+      if (cidrTools.overlap(network.fullNtwk, req.body.fullNtwk)) {
+        return res.render("/networks/error", {
+          errorMsg: `This network overlaps an existing network: ${network.friendlyName}, which is using ${network.firstAddr} to ${network.lastAddr}`,
+        });
+      }
+      if ((req.body.friendlyName = network.friendlyName)) {
+        return res.render("/network/error", {
+          errorMsg: `A network with the name ${req.body.friendlyName} already exists.`,
+        });
+      }
+    });
+    user.networks.push(req.body);
+    user.save(function(err) {
+      res.redirect(`/networks`);
+    });
+  });
 }
