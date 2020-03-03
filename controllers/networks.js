@@ -3,19 +3,20 @@ const dns = require("dns");
 
 module.exports = {
   index,
+  new: newNetwork,
 };
 
 function index(req, res) {
-  Network.find({}, function(err, networks) {
+  Network.find({ userOwner: req.user }, function(err, networks) {
     if (err) return next(err);
-    dns.setServers(["10.0.0.20", "9.9.9.9"]);
-    dns.reverse("10.0.0.29", (err, hostName) => {
-      res.render("networks/index", {
-        networks,
-        hostName,
-        user: req.user,
-        name: req.query.name,
-      });
+    res.render("networks/index", {
+      title: "Your Networks",
+      networks,
+      user: req.user,
     });
   });
+}
+
+function newNetwork(req, res) {
+  
 }

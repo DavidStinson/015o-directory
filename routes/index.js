@@ -12,7 +12,7 @@ router.post(
   "/auth/apple/callback",
   express.urlencoded({ extended: true }),
   passport.authenticate("apple", {
-    successRedirect: "/",
+    successRedirect: "/networks",
     failureRedirect: "/users/error",
   })
 );
@@ -25,14 +25,9 @@ router.get(
 router.get(
   "/auth/google/oauth2callback",
   passport.authenticate("google", {
-    successRedirect: "/",
+    successRedirect: "/networks",
     failureRedirect: "/users/error",
   })
 );
-
-router.get("/logout", function(req, res) {
-  req.logout();
-  res.redirect("/users");
-});
 
 module.exports = router;
