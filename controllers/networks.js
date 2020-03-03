@@ -1,5 +1,6 @@
 const Network = require("../models/network");
 const dns = require("dns");
+var Netmask = require('netmask').Netmask
 
 module.exports = {
   index,
@@ -18,12 +19,12 @@ function index(req, res) {
 }
 
 function newNetwork(req, res) {
-  Network.find({ userOwner: req.user }, function(err, networks) {
-    if (err) return next(err);
-    res.render("networks/new", {
-      title: "Your Networks",
-      networks,
-      user: req.user,
-    });
+  res.render("networks/new", {
+    title: "Make a New Network",
+    user: req.user,
   });
+}
+
+function confirmNetwork(req, res) {
+  
 }
