@@ -11,7 +11,7 @@ const networkSchema = new Schema(
     ntwkAddr: String,
     routerAddr: String,
     subnetMask: String,
-    vLAN: Number,
+    vLan: Number,
   },
   {
     timestamps: true,

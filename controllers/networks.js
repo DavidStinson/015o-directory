@@ -5,6 +5,7 @@ var Netmask = require('netmask').Netmask
 module.exports = {
   index,
   new: newNetwork,
+  confirm
 };
 
 function index(req, res) {
@@ -18,6 +19,8 @@ function index(req, res) {
   });
 }
 
+/* HEY!!!!!! Don't forget isLoggedIn!!!! */
+
 function newNetwork(req, res) {
   res.render("networks/new", {
     title: "Make a New Network",
@@ -25,6 +28,6 @@ function newNetwork(req, res) {
   });
 }
 
-function confirmNetwork(req, res) {
-  
+function confirm(req, res) {
+  console.log(req.body)
 }

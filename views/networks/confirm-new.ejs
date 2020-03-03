@@ -1,17 +1,7 @@
 <%- include('../partials/header') %>
 
 <% if (user) { %>
-	<main>
-		<h1>Please add a network below</h1>
-		<form action="/networks/new" method="POST">
-			<label>Network Address
-				<input type="text" name="ntwkAddr"> 
-			</label>
-			<label>CIDR Address
-				<input type="datetime-local" name="departs"/> 
-			</label>
-		</form>
-	</main>
+
 <% } else { %> 
 	<%-include('../partials/userLogin') %> 
 <% } %>

@@ -12,6 +12,21 @@ a:visited {
   color: gray;
 }
 
+/* Containers */
+
+.container {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 10px;
+  border: 4px whitesmoke solid;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: right;
+}
+
 #bounding-box {
   height: 100vh;
   width: 100vw;
@@ -21,24 +36,40 @@ a:visited {
 }
 
 #sign-in-container {
-  background-color: rgba(255, 255, 255, 0.15);
-  padding: 20px;
-  width: 310px;
-  height: 350px;
-  margin: auto;
+  width: 330px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  border: 4px, whitesmoke, solid;
+  margin: auto;
 }
 
-.max,
-.subhead {
+#new-network-container {
+  width: 330px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}
+
+
+
+/* font assignment */
+
+.os {
   font-family: "Open Sans", sans-serif;
 }
 
+.mono {
+  font-family: "bitstream_vera_sans_monoroman", sans-serif;
+}
+
+/* Headers */
 .max {
   font-size: 60px;
   font-weight: bold;
@@ -47,11 +78,17 @@ a:visited {
   line-height: 55px;
 }
 
+.head {
+  font-size: 36px;
+  flex-shrink: 1;
+}
+
 .subhead {
   font-size: 24px;
   flex-grow: 0.5;
 }
 
+/* sign in buttons */
 .signin-button,
 .signin-button-container {
   width: 230px;
@@ -61,4 +98,13 @@ a:visited {
 
 .signin-button-container {
   margin: 4px;
+}
+/* Text Inputs*/
+
+.large-input {
+  display: block;
+  width: 250px;
+  height: 36px;
+  font-size: 24px;
+  text-align: right;
 }

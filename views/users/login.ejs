@@ -7,17 +7,42 @@
     <title>Networks</title>
   </head>
   <body>
-    <ul class="right">
-      <li>
-        <% if (user) { %>
-        <h1>You're logged in!</h1>
-        <a href="/users/logout">Log Out</a>
-        <% } else { %>
-        <h1>You're not logged in!</h1>
-        <a href="/auth/google">Login with Google</a>
-        <a href="/auth/apple">Sign in with Apple</a>
-        <% } %>
-      </li>
-    </ul>
+    <% if (user) { %>
+    <h1>You're logged in!</h1>
+    <a href="/users/logout">Log Out</a>
+    <% } else { %>
+			<div id="bounding-box">
+				<section id="sign-in-container" class="container">
+					<h1 class="max os">Welcome</h1>
+					<h2 class="subhead os">Please sign in below.</h2>
+					<!-- Sign in with Apple button -->
+					<div 
+						id="sign-in-with-apple-button" 
+						class="signin-button-container"
+					>
+						<a href="/auth/apple">
+							<img 
+								src="/images/siwa-button.png" 
+								alt="Sign In with Apple button" 
+								class="signin-button"
+							>
+						</a>
+					</div>
+					<!-- Sign in with Google Button -->
+					<div 
+						id="sign-in-with-google-button" 
+						class="signin-button-container"
+					>
+						<a href="/auth/google">
+							<img 
+								src="/images/siwg-button.png" 
+								alt="Sign In with Google button" 
+								class="signin-button"
+							>
+						</a>
+					</div>
+				</section>
+			</div>
+    <% } %>
   </body>
 </html>
