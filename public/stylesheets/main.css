@@ -1,13 +1,54 @@
 body {
   font-family: sans-serif;
   background-color: #1f1e23;
+
   color: white;
 }
-
 a {
   color: white;
 }
 
 a:visited {
   color: gray;
+}
+
+#sign-in-container {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 20px;
+  width: 310px;
+  height: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+.max,
+.subhead {
+  font-family: "Open Sans", sans-serif;
+}
+
+.max {
+  font-size: 60px;
+  font-weight: bold;
+  flex-grow: 1;
+  margin: 20px auto;
+}
+
+.subhead {
+  font-size: 24px;
+  flex-grow: 2;
+}
+
+.signin-button,
+.signin-button-container {
+  width: 230px;
+  height: 44px;
+  border-radius: 5px;
+}
+
+.signin-button-container {
+  margin: 4px;
 }

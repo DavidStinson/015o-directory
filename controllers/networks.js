@@ -18,5 +18,12 @@ function index(req, res) {
 }
 
 function newNetwork(req, res) {
-  
+  Network.find({ userOwner: req.user }, function(err, networks) {
+    if (err) return next(err);
+    res.render("networks/new", {
+      title: "Your Networks",
+      networks,
+      user: req.user,
+    });
+  });
 }

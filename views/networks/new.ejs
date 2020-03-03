@@ -1,9 +1,39 @@
-<%- include('../partials/header') %> 
+<%- include('../partials/header') %>
 
 <% if (user) { %>
-
-<% } else { %>
-	<%- include('../partials/userLogin') %>
+	<main>
+		<h1>Please add a network below</h1>
+		<form action="/networks" method="POST">
+			<label>Destination
+				<select name="airport">
+					<option value="AUS">AUS</option>
+					<option value="DFW">DFW</option>
+					<option value="LAX">LAX</option>
+					<option value="SFO">SFO</option>
+					<option value="SEA">SEA</option>
+				</select> 
+			</label>
+			<label
+				>Airline
+				<select name="airline">
+					console.log(stuff)
+					<option value="American">American</option>
+					<option value="Southwest">Southwest</option>
+					<option value="United">United</option>
+				</select> </label
+			><br />
+			<label>Flight No: <input type="text" name="flightNo" /> </label><br />
+			<label
+				>Departs:
+				<input
+					type="datetime-local"
+					name="departs"
+				/> </label
+			><br />
+		</form>
+	</main>
+<% } else { %> 
+	<%-include('../partials/userLogin') %> 
 <% } %>
 
 <%- include('../partials/footer') %>
