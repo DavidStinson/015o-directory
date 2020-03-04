@@ -159,6 +159,38 @@ nav {
   align-items: center;
 }
 
+.user-avatar-container {
+  flex-grow: 99;
+}
+
+.nav-btn-container {
+  flex-basis: auto;
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.nav-btn-container:visited {
+  color: whitesmoke;
+}
+
+.nav-btn {
+  background-color: #1f1e23;
+  border-radius: 24px;
+  height: 30px;
+  flex-basis: auto;
+  height: 48px;
+  margin-right: 7px;
+}
+
+.nav-btn:hover {
+  background-color: cornflowerblue;
+}
+
+.nav-text {
+  line-height: 48px;
+  margin: 0 15px;
+}
+
 /* font assignment */
 
 .os {
@@ -262,22 +294,21 @@ nav {
 .user-avatar-emoji {
   background-color: whitesmoke;
   border-radius: 20px;
-  font-size: 40px;
+  font-size: 24px;
   text-align: center;
 }
 
 .user-avatar-emoji-lrg {
-  background-color: whitesmoke;
-  border-radius: 30px;
   font-size: 60px;
   text-align: center;
 }
 
 .user-avatar-emoji,
 .user-avatar-img {
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  font-size: 40px;
   margin: auto 16px;
 }
 
