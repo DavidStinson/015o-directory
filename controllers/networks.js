@@ -28,6 +28,9 @@ function newNetwork(req, res) {
 function create(req, res) {
   req.body.fullNtwk = `${req.body.ntwkAddr}/${req.body.cidrMask}`;
   let errorCode = null;
+  let errMatchNtwkName = null;
+  let errMatchNtwkFirstAddr = null;
+  let errMatchNtwkLastAddr = null;
   let ipBlock = new Netmask(req.body.fullNtwk);
   req.body.broadcastAddr = ipBlock.broadcast;
   req.body.firstAddr = ipBlock.first;
@@ -39,8 +42,11 @@ function create(req, res) {
     user.networks.forEach(network => {
       if (cidrTools.overlap(network.fullNtwk, req.body.fullNtwk)) {
         errorCode = 1;
+        errMatchNtwkName = network.friendlyName;
+        errMatchNtwkFirstAddr = network.firstAddr;
+        errMatchNtwkLastAddr = network.lastAddr;
       }
-      if ((req.body.friendlyName = network.friendlyName)) {
+      if (req.body.friendlyName === network.friendlyName) {
         errorCode = 2;
       }
     });
@@ -51,7 +57,7 @@ function create(req, res) {
       });
     } else if (errorCode === 1) {
       res.render("networks/error", {
-        errorMsg: `This network overlaps an existing network: ${network.friendlyName}, which is using ${network.firstAddr} to ${network.lastAddr}`,
+        errorMsg: `This network overlaps an existing network: ${errMatchNtwkName} which is using address range ${errMatchNtwkFirstAddr} to ${errMatchNtwkLastAddr}`,
         title: "Network Creation Error!",
       });
     } else {

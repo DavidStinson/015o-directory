@@ -38,6 +38,7 @@ a:visited {
   display: flex;
   justify-content: center;
   align-content: center;
+  text-align: center;
   flex-direction: column;
 }
 
@@ -127,6 +128,7 @@ a:visited {
 #marerror-kondo {
   width: 250px;
   height: 250px;
+  margin: 10px auto;
 }
 
 /* text inputs*/
