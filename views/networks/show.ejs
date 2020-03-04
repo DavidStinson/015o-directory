@@ -1,21 +1,28 @@
 <%- include('../partials/header') %> 
 <%- include('../partials/baseNav') %>
 
-<main id="index-box">
-  <% networks.forEach(network => { %>
-    <section class="network-container container">
-      <div class="network-head">
-        <a href="/networks/<%= network._id %>" class="ntwk-name mono"><%= network.friendlyName %></a>
-        <a href="/networks/<%= network._id %>" class="ntwk-full-addr mono"><%= network.fullNtwk %> </a>
-        <form action="/networks/<%= network._id %>">
-          <button 
-            class="connect-interface-btn os" 
-            type="submit"
-          >Connect device</button>
-        </form>
-      </div>
-    </section>
-  <% }) %>
+<main id="page-content-box">
+  <section class="show-container container">
+		<div class="show-container">
+			<p class="show-data-label os">NETWORK NAME</p>
+			<h2 class="show-data mono"><%= user.name %> </h2>
+		</div>
+		<div class="show-container">
+			<p class="show-data-label os">EMAIL</p>
+			<h2 class="show-data mono"><%= user.email %> </h2>
+		</div>
+		<div class="show-container">
+			<p class="show-data-label os">015o.net ADMIN</p>
+			<h2 class="show-data mono"><%= user.local ? "Yes" : "No" %> </h2>
+		</div>
+		<div class="show-container">
+			<p class="show-data-label os">AUTHENTICATION AGENT</p>
+			<h2 class="show-data mono"><%= user.oAuthProvider %></h2>
+		</div>
+		<form action="/users/logout" class="button-container-lrg">
+			<button type="submit" class="logout-button os">LOGOUT</button>
+		</form>
+	</section>
 </main>
 
 <%- include('../partials/footer') %>
