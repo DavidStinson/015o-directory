@@ -7,6 +7,7 @@ module.exports = {
   index,
   new: newNetwork,
   create,
+  show
 };
 
 function index(req, res) {
@@ -69,4 +70,8 @@ function create(req, res) {
       });
     }
   });
+}
+
+function show(req, res) {
+  
 }

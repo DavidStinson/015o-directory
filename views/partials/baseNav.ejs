@@ -1,10 +1,10 @@
 <nav>
 	<% if (user.avatar) { %>
-		<a href="/users">
+		<a href="/users/<%= user._id %>">
 			<img src="<%= user.avatar %>" alt="Your avatar" class="user-avatar-img">
 		</a>
 	<% } else { %>
-		<a>
+		<a href="/users/<%= user._id %>">
 			<h2 class="user-avatar-emoji">👤</h2>
 		</a>
 	<% } %>

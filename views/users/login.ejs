@@ -1,48 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/stylesheets/main.css" />
-    <title>Networks</title>
-  </head>
-  <body>
-    <% if (user) { %>
-    <h1>You're logged in!</h1>
-    <a href="/users/logout">Log Out</a>
-    <% } else { %>
-			<div id="bounding-box">
-				<section id="sign-in-container" class="container">
-					<h1 class="max os">Welcome</h1>
-					<h2 class="subhead os">Please sign in below.</h2>
-					<!-- Sign in with Apple button -->
-					<div 
-						id="sign-in-with-apple-button" 
-						class="signin-button-container"
+<%- include('../partials/header') %>
+<% if (user) { %>
+<h1>You're logged in!</h1>
+<a href="/users/logout">Log Out</a>
+<% } else { %>
+	<div id="bounding-box">
+		<section id="sign-in-container" class="container">
+			<h1 class="max os">Welcome</h1>
+			<h2 class="subhead os">Please sign in below.</h2>
+			<!-- Sign in with Apple button -->
+			<div 
+				id="sign-in-with-apple-button" 
+				class="signin-button-container"
+			>
+				<a href="/auth/apple">
+					<img 
+						src="/images/siwa-button.png" 
+						alt="Sign In with Apple button" 
+						class="signin-button"
 					>
-						<a href="/auth/apple">
-							<img 
-								src="/images/siwa-button.png" 
-								alt="Sign In with Apple button" 
-								class="signin-button"
-							>
-						</a>
-					</div>
-					<!-- Sign in with Google Button -->
-					<div 
-						id="sign-in-with-google-button" 
-						class="signin-button-container"
-					>
-						<a href="/auth/google">
-							<img 
-								src="/images/siwg-button.png" 
-								alt="Sign In with Google button" 
-								class="signin-button"
-							>
-						</a>
-					</div>
-				</section>
+				</a>
 			</div>
-    <% } %>
-  </body>
-</html>
+			<!-- Sign in with Google Button -->
+			<div 
+				id="sign-in-with-google-button" 
+				class="signin-button-container"
+			>
+				<a href="/auth/google">
+					<img 
+						src="/images/siwg-button.png" 
+						alt="Sign In with Google button" 
+						class="signin-button"
+					>
+				</a>
+			</div>
+		</section>
+	</div>
+<% } %>
+		
+<%- include('../partials/footer') %>

@@ -5,6 +5,7 @@ const networksCtrl = require("../controllers/networks");
 router.get("/", isLoggedIn, networksCtrl.index);
 router.get("/new", isLoggedIn, networksCtrl.new);
 router.post("/", isLoggedIn, networksCtrl.create)
+router.post("/:id", isLoggedIn, networksCtrl.show)
 
 function isLoggedIn(req,res,next) {
 	if(req.isAuthenticated()) return next()

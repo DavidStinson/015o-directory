@@ -1,18 +1,12 @@
 <%- include('../partials/header') %> 
 <%- include('../partials/baseNav') %>
 
-<main id="page-content-box">
+<main id="index-box">
   <% networks.forEach(network => { %>
     <section class="network-container container">
       <div class="network-head">
-        <a 
-          href="/networks/<%= network._id %>" 
-          class="ntwk-name mono"
-        ><%= network.friendlyName %></a>
-        <a 
-          href="/networks/<%= network._id %>" 
-          class="ntwk-full-addr mono"
-        ><%= network.fullNtwk %></a>
+        <a href="/networks/<%= network._id %>" class="ntwk-name mono"><%= network.friendlyName %></a>
+        <a href="/networks/<%= network._id %>" class="ntwk-full-addr mono"><%= network.fullNtwk %> </a>
         <form action="/networks/<%= network._id %>">
           <button 
             class="connect-interface-btn os" 
