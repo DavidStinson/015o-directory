@@ -38,6 +38,7 @@ a:visited {
   display: flex;
   justify-content: center;
   align-content: center;
+  flex-direction: column;
 }
 
 #sign-in-container {
@@ -120,6 +121,12 @@ a:visited {
 .submit-button:hover {
   cursor: pointer;
   background-color: #459771;
+}
+
+/* IMAGES */
+#marerror-kondo {
+  width: 250px;
+  height: 250px;
 }
 
 /* text inputs*/
