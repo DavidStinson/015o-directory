@@ -55,7 +55,7 @@ passport.use(
       clientID: process.env.APPLE_CLIENT_ID,
       teamID: process.env.APPLE_TEAM_ID,
       keyID: process.env.APPLE_KEY_ID,
-      key: "",
+      key: process.env.APPLE_KEY,
       callbackURL: process.env.APPLE_CALLBACK,
       scope: ["name", "email"],
     },
