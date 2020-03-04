@@ -10,10 +10,12 @@ module.exports = {
 };
 
 function index(req, res) {
-  res.render("networks/index", {
-    title: "Your Networks",
-    user: req.user,
-  });
+  User.findById(req.user, (err, user) => {
+    res.render("networks/index", {
+      title: "Your Networks",
+      networks: user.networks
+    });
+  })
 }
 
 /* HEY!!!!!! Don't forget isLoggedIn!!!! */

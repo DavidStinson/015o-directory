@@ -20,6 +20,63 @@ a:visited {
   border: 4px whitesmoke solid;
 }
 
+.network-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  align-content: center;
+}
+
+/* network headers */
+
+.network-head {
+  display: grid;
+  width: 330px;
+  grid-template-rows: 44px 30px;
+  grid-template-columns: 180px 150px;
+  grid-template-areas:
+    "ntwk-name ntwk-name"
+    "ntwk-full-addr ntwk-details";
+}
+
+.ntwk-name {
+  grid-area: ntwk-name;
+  justify-self: left;
+  margin: 0;
+  align-self: center;
+  font-size: 36px;
+  text-decoration: none;
+}
+
+.ntwk-full-addr {
+  grid-area: ntwk-full-addr;
+  justify-self: left;
+  margin: 0;
+  align-self: center;
+  text-decoration: none;
+}
+
+.connect-interface-btn {
+  background-color: #1f1e23;
+  border-radius: 20px;
+  height: 30px;
+  width: 150px;
+  justify-self: center;
+  grid-area: connect-interface;
+  margin: 0;
+  color: whitesmoke;
+  text-align: center;
+  border: none;
+  font-size: 16px;
+}
+
+.connect-interface-btn:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+}
+
+/* forms */
+
 .form-container {
   display: flex;
   flex-direction: column;
@@ -40,6 +97,13 @@ a:visited {
   align-content: center;
   text-align: center;
   flex-direction: column;
+}
+
+#index-box {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }
 
 #sign-in-container {
