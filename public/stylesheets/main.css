@@ -33,6 +33,51 @@ a:visited {
   margin: auto;
 }
 
+.single-centered-container-centered-items {
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}
+
+#bounding-box {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+#centered-page-content-box {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+#left-page-content-box {
+  width: 90vw;
+  display: flex;
+  justify-content: left;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+#new-network-container {
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}
+
 /* network headers */
 
 .network-head {
@@ -60,6 +105,10 @@ a:visited {
   margin: 0;
   align-self: center;
   text-decoration: none;
+}
+.ntwk-name:visited,
+.ntwk-full-addr:visited {
+  color: whitesmoke;
 }
 
 /* network header button */
@@ -96,46 +145,6 @@ a:visited {
 .show-container,
 .input-container {
   margin-bottom: 10px;
-}
-
-#bounding-box {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  text-align: center;
-  flex-direction: column;
-}
-
-#page-content-box {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-#sign-in-container {
-  width: 330px;
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-  margin: auto;
-}
-
-#new-network-container {
-  width: 330px;
-  height: 475px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-  margin: auto;
 }
 
 /* nav */
