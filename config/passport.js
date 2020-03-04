@@ -55,7 +55,7 @@ passport.use(
       clientID: process.env.APPLE_CLIENT_ID,
       teamID: process.env.APPLE_TEAM_ID,
       keyID: process.env.APPLE_KEY_ID,
-      key: fs.readFileSync(path.join(__dirname, "/../Auth.p8")),
+      //key: fs.readFileSync(path.join(__dirname, "/../Auth.p8")),
       callbackURL: process.env.APPLE_CALLBACK,
       scope: ["name", "email"],
     },
