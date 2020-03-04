@@ -1,0 +1,12 @@
+<nav>
+	<% if (user.avatar) { %>
+		<a href="/users">
+			<img src="<%= user.avatar %>" alt="Your avatar" class="user-avatar-img">
+		</a>
+	<% } else { %>
+		<a>
+			<h2 class="user-avatar-emoji">👤</h2>
+		</a>
+	<% } %>
+		
+</nav>

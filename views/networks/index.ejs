@@ -1,11 +1,8 @@
 <%- include('../partials/header') %> 
-<% if (user) { %>
-  <h1>You're logged in!</h1>
-  <a href="/logout">Log Out</a>
-<% } else { %>
-  <h1>You're not logged in!</h1>
-  <a href="/auth/google">Login with Google</a>
-  <a href="/auth/apple">Sign in with Apple</a>
-<% } %>
+<%- include('../partials/baseNav') %>
+
+<main id="bounding-box">
+
+</main>
 
 <%- include('../partials/footer') %>

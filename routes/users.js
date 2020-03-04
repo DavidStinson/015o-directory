@@ -1,30 +1,26 @@
 const express = require("express");
 const router = express.Router();
 
-router.get('/', function(req, res, next) {
-  res.render("users/index"), {
-    title: "015o Directory User Page",
-    user: req.user
-  }
+router.get("/", isLoggedIn, function(req, res, next) {
+  res.render("users/index", { title: "015o Directory User Page" });
 });
 
-router.get('/error', function(req, res, next) {
-  res.render("users/error"), {
-    title: "Error!",
-    user: req.user
-  }
+router.get("/error", isLoggedIn, function(req, res, next) {
+  res.render("users/error", { title: "Error!" });
 });
 
-router.get('/login', function(req, res, next) {
-  res.render("users/login", {
-    title: "015o Directory Login Page",
-    user: req.user
-  })
-})
+router.get("/login", isLoggedIn, function(req, res, next) {
+  res.render("users/login", { title: "015o Directory Login Page" });
+});
 
-router.get("/logout", function(req, res) {
+router.get("/logout", isLoggedIn, function(req, res) {
   req.logout();
   res.redirect("/");
 });
+
+function isLoggedIn(req,res,next) {
+	if(req.isAuthenticated()) return next()
+	res.redirect('/users/login')
+}
 
 module.exports = router;

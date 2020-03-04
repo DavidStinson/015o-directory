@@ -64,6 +64,17 @@ a:visited {
   margin: auto;
 }
 
+/* nav */
+nav {
+  margin: 0;
+  width: 100vw;
+  height: 64px;
+  background-color: cornflowerblue;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
 /* font assignment */
 
 .os {
@@ -74,7 +85,7 @@ a:visited {
   font-family: "bitstream_vera_sans_monoroman", sans-serif;
 }
 
-/* Headers */
+/* HEADERS */
 .max {
   font-size: 60px;
   font-weight: bold;
@@ -125,6 +136,20 @@ a:visited {
 }
 
 /* IMAGES */
+
+.user-avatar-emoji {
+  background-color: whitesmoke;
+  border-radius: 20px;
+  font-size: 40px;
+}
+
+.user-avatar-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin: auto 16px;
+}
+
 #marerror-kondo {
   width: 250px;
   height: 250px;
