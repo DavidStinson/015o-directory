@@ -1,0 +1,55 @@
+<%- include('../partials/header') %> 
+<%- include('../partials/navUserShowNtwkBackDev') %>
+
+<main id="centered-page-content-box">
+  <section class="show-container container">
+		<div class="data-container">
+			<p class="show-data-label-center os">DEVICE NAME</p>
+			<h2 class="show-data-center mono"><%= device.name %> </h2>
+		</div>
+		<div class="data-container">
+			<p class="show-data-label os">DEVICE CLASS</p>
+			<h2 class="show-data mono"><%= device.deviceClass %> </h2>
+		</div>
+		<div class="data-container">
+			<p class="show-data-label os">OS</p>
+			<h2 class="show-data mono"><%= device.os %> </h2>
+		</div>
+		<div class="data-container">
+			<p class="show-data-label os">MAC ADDRESS</p>
+			<h2 class="show-data mono"><%= device.macAddress %> </h2>
+		</div>
+		<form 
+			action="/devices/<%= device._id %>?_method=PUT" 
+			method="POST" 
+			class="form-container"
+		>
+			<div class="input-container">
+				<p class="show-data-label os">IP ADDRESS
+					<input 
+						type="text" 
+						pattern="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}" 
+						name="ipAddress"
+						class="mono large-input"
+						value="<%= device.ipAddress %>"
+						required
+					> 
+				</p>
+			</div>
+			<div class="input-container">
+				<p class="show-data-label os">HOSTNAME
+					<input 
+						type="text"
+						name="hostName"
+						class="mono large-input"
+						value="<%= device.hostName %>"
+						required
+					> 
+				</p>
+			</div>
+			<button type="submit" class="update-button os">UPDATE</button>
+		</form>
+	</section>
+</main>
+
+<%- include('../partials/footer') %>

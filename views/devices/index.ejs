@@ -12,14 +12,14 @@
         <a 
           href="/devices/<%= device._id %>" 
           class="list-subhead mono"
-        ><%= device.fullNtwk %></a>
-        <form action="/devices/<%= device._id %>">
+        ><%= device.ipAddress %></a>
+        <form action="/devices/<%= device._id %>?_method=DELETE" method="POST">
           <button 
-            class="list-head-btn os" 
+            class="list-head-delete-btn os" 
             type="submit"
-          >Connect device</button>
+          >Delete device</button>
         </form>
-      </div>
+			</div>
     </section>
   <% }) %>
 </main>

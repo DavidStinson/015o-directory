@@ -148,6 +148,27 @@ a:visited {
   cursor: pointer;
 }
 
+.list-head-delete-btn {
+  background-color: #78110a;
+  border-radius: 20px;
+  height: 30px;
+  width: 150px;
+  justify-self: center;
+  grid-area: list-head-btn;
+  margin: 0;
+  color: whitesmoke;
+  text-align: center;
+  border: none;
+  font-size: 16px;
+}
+
+.list-head-delete-btn:hover {
+  background-color: #92140c;
+  cursor: pointer;
+}
+
+/* list items*/
+
 /* forms */
 
 .form-container {
@@ -288,7 +309,8 @@ nav {
 /* large buttons */
 
 .logout-button,
-.submit-button {
+.submit-button,
+.update-button {
   width: 283px;
   height: 44px;
   font-size: 24px;
@@ -310,14 +332,16 @@ nav {
   background-color: #92140c;
 }
 
-/* submit */
+/* submit and update */
 
-.submit-button {
+.submit-button,
+.update-button {
   color: white;
   background-color: #177d4e;
 }
 
-.submit-button:hover {
+.submit-button:hover,
+.update-button:hover {
   cursor: pointer;
   background-color: #459771;
 }

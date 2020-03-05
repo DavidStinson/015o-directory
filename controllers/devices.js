@@ -7,6 +7,7 @@ module.exports = {
   create,
   show,
   delete: deleteOne,
+  update,
 };
 
 function index(req, res) {
@@ -92,6 +93,18 @@ function show(req, res) {
 
 function deleteOne(req, res) {
   req.user.devices.id(req.params.deviceId).remove();
-  //req.user.networks.pull(req.params.ntwkId);
-  res.redirect("devices/");
+  req.user.save(function(err) {
+    console.log(`Removed!`);
+  });
+  res.redirect("/devices");
+}
+
+function update(req, res) {
+  let device = req.user.devices.id(req.params.deviceId);
+  device.ipAddress = req.body.ipAddress;
+  device.hostName = req.body.hostName;
+  req.user.save(function(err) {
+    console.log(`Removed!`);
+  });
+  res.redirect("/devices");
 }

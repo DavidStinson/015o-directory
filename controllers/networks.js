@@ -13,6 +13,7 @@ function index(req, res) {
   res.render("networks/index", {
     title: "Your Networks",
     networks: req.user.networks,
+    devices: req.user.devices,
   });
 }
 
