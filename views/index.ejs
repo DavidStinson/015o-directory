@@ -1,13 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/stylesheets/main.css" />
-  <title><%= title %></title>
-</head>
-<body>
-  <h1><%= title %></h1>
-  <p>Welcome to <%= title %></p>    
+<%- include('./partials/header') %>
+  <div id="bounding-box">
+    <h1 class="os" style="margin: 20px 10px;">015o Directory located is an IP Network/Device directory created by David Stinson for 015o.net and other networks.</h1>
+    <a 
+      href="https://github.com/DavidStinson/015o-directory" 
+      target="_blank"
+      class="os"
+      style="font-size: 20px;"
+    >Learn more about this project here.
+    </a>
+    <form action="/networks/" method="GET">
+      <button 
+        type="submit"
+        class="submit-button os" 
+        style="margin: 10px auto;"
+      >CONTINUE</button>
+		</form>
+  </div> 
 </body>
 </html>

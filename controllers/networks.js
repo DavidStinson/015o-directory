@@ -14,6 +14,7 @@ function index(req, res) {
     title: "Your Networks",
     networks: req.user.networks,
     devices: req.user.devices,
+    cidrTools,
   });
 }
 
