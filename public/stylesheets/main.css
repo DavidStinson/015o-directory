@@ -84,19 +84,19 @@ a:visited {
   margin: auto;
 }
 
-/* network headers */
+/* list headers */
 
-.network-head {
+.list-head {
   display: grid;
   width: 330px;
   grid-template-rows: 44px 30px;
   grid-template-columns: 180px 150px;
   grid-template-areas:
-    "ntwk-name ntwk-name"
-    "ntwk-full-addr ntwk-details";
+    "list-name list-name"
+    "list-subhead list-head-btn";
 }
 
-.ntwk-name {
+.list-name {
   grid-area: ntwk-name;
   justify-self: left;
   margin: 0;
@@ -105,21 +105,21 @@ a:visited {
   text-decoration: none;
 }
 
-.ntwk-full-addr {
+.list-subhead {
   grid-area: ntwk-full-addr;
   justify-self: left;
   margin: 0;
   align-self: center;
   text-decoration: none;
 }
-.ntwk-name:visited,
-.ntwk-full-addr:visited {
+.list-name:visited,
+.list-subhead:visited {
   color: whitesmoke;
 }
 
-/* network header button */
+/* list header button */
 
-.connect-interface-btn {
+.list-head-btn {
   background-color: #1f1e23;
   border-radius: 20px;
   height: 30px;
@@ -133,7 +133,7 @@ a:visited {
   font-size: 16px;
 }
 
-.connect-interface-btn:hover {
+.list-head-btn:hover {
   background-color: cornflowerblue;
   cursor: pointer;
 }

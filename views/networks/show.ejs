@@ -1,5 +1,5 @@
 <%- include('../partials/header') %> 
-<%- include('../partials/userBackNtwk') %>
+<%- include('../partials/navUserBackNtwkShowDev') %>
 
 <main id="centered-page-content-box">
   <section class="show-container container">
@@ -39,6 +39,7 @@
 			<p class="show-data-label os">VLAN</p>
 			<h2 class="show-data mono"><%= network.vLAN %></h2>
 		</div>
+		<div> --- <%= network.id %> </div>
 		<form 
 			action="/networks/<%= network.id %>?_method=DELETE" 
 			method="POST" 

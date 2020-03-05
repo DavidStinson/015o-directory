@@ -1,5 +1,4 @@
-const Netmask = require("netmask").Netmask;
-const cidrTools = require("cidr-tools");
+const dns = require("dns")
 
 module.exports = {
   index,
@@ -10,15 +9,15 @@ module.exports = {
 };
 
 function index(req, res) {
-  res.render("networks/index", {
-    title: "Your Networks",
-    networks: req.user.networks,
+  res.render("devicess/index", {
+    title: "Your Devices",
+    devicess: req.user.devices,
   });
 }
 
 function newNetwork(req, res) {
-  res.render("networks/new", {
-    title: "Make a New Network",
+  res.render("devicess/new", {
+    title: "Make a New Device",
     user: req.user,
   });
 }
@@ -59,7 +58,7 @@ function create(req, res) {
       title: "Network Creation Error!",
     });
   } else {
-    res.render("networks/error", {
+    res.render("s/error", {
       errorMsg: `A network with the name ${req.body.friendlyName} already exists.`,
       title: "Network Creation Error!",
     });
@@ -68,14 +67,14 @@ function create(req, res) {
 
 function show(req, res) {
   let network = req.user.networks.id(req.params.ntwkId);
-  res.render("networks/show", {
-    title: `${network.friendlyName} Network`,
+  res.render("devices/show", {
+    title: `${device.name}`,
     network,
   });
 }
 
 function deleteOne(req, res) {
-  req.user.networks.id(req.params.ntwkId).remove();
+  req.user.devices.id(req.params.deviceId).remove();
   //req.user.networks.pull(req.params.ntwkId);
-  res.redirect("networks/");
+  res.redirect("devices/");
 }

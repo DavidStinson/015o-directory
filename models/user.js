@@ -19,6 +19,21 @@ const networkSchema = new Schema(
   }
 );
 
+const deviceSchema = new Schema(
+  {
+		deviceClass: String,
+		os: String,
+    macAddress: String,
+		ipAddresses: String,
+		dnsName: String,
+		destInterface: String,
+		pathToDestPort: String,
+  },
+  {
+    timestamps: true,
+  }
+);
+
 const userSchema = new mongoose.Schema(
   {
     name: String,
@@ -26,6 +41,7 @@ const userSchema = new mongoose.Schema(
     email: String,
     local: Boolean,
     networks: [networkSchema],
+    devices: [deviceSchema],
     oAuthProvider: String,
     userId: String,
   },
