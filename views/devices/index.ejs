@@ -2,18 +2,18 @@
 <%- include('../partials/navUserNewNtwkShowDev') %>
 
 <main id="left-page-content-box">
-  <% networks.forEach(network => { %>
+  <% devices.forEach(device => { %>
     <section class="list-container container">
       <div class="list-head">
         <a 
-          href="/networks/<%= network._id %>" 
+          href="/devices/<%= device._id %>" 
           class="list-name mono"
-        ><%= network.friendlyName %></a>
+        ><%= device.name %></a>
         <a 
-          href="/networks/<%= network._id %>" 
+          href="/devices/<%= device._id %>" 
           class="list-subhead mono"
-        ><%= network.fullNtwk %></a>
-        <form action="/networks/<%= network._id %>">
+        ><%= device.fullNtwk %></a>
+        <form action="/devices/<%= device._id %>">
           <button 
             class="list-head-btn os" 
             type="submit"

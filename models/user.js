@@ -21,6 +21,7 @@ const networkSchema = new Schema(
 
 const deviceSchema = new Schema(
   {
+    name: String,
 		deviceClass: String,
 		os: String,
     macAddress: String,
