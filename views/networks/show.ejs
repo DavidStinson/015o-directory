@@ -39,9 +39,8 @@
 			<p class="show-data-label os">VLAN</p>
 			<h2 class="show-data mono"><%= network.vLAN %></h2>
 		</div>
-		<div> --- <%= network.id %> </div>
 		<form 
-			action="/networks/<%= network.id %>?_method=DELETE" 
+			action="/networks/<%= network._id %>?_method=DELETE" 
 			method="POST" 
 			class="button-container-lrg"
 		>

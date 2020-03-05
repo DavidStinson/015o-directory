@@ -1,0 +1,74 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navUserShowNtwkBackDev') %>
+
+<main id="bounding-box">
+	<section class="new-item-container container">
+		<h1 class="head">Add a device</h1>
+		<form action="/devices" method="POST" class="form-container">
+			<div class="input-container">
+				<label class="os">Device Name
+					<input 
+						type="text" 
+						name="name" 
+						class="mono large-input"
+						maxlength="15"
+						required
+					> 
+				</label>
+			</div>
+			<div class="input-container">
+				<label class="os">Device Class
+					<select 
+						name="deviceClass"
+						class="mono large-input-dropdown"
+					>
+						<option value="Server">Server</option>
+						<option value="Mobile">Mobile</option>
+						<option value="IoT">IoT</option>
+						<option value="Wearable">Wearable</option>
+					</select>
+				</label>
+			</div>
+			<div class="input-container">
+				<label class="os">Operating System
+					<select 
+					name="os"
+					class="mono large-input-dropdown"
+					>
+						<option value="Windows">Windows</option>
+						<option value="macOS">macOS</option>
+						<option value="Linux Variant">Linux Variant</option>
+						<option value="iOS">iOS</option>
+						<option value="Other">Other</option>
+					</select>
+				</label>
+			</div>
+			<div class="input-container">
+				<label class="os">MAC Address
+					<input 
+						pattern="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"
+						type="text" 
+						name="macAddress" 
+						class="mono large-input"
+						placeholder="0A-5F-43-91-CA-FE"
+						required
+					>
+				</label>
+			</div>
+			<div class="input-container">
+				<label class="os">IP Address
+					<input 
+						type="text" 
+						pattern="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}" 
+						name="ipAddress"
+						class="mono large-input"
+						required
+					> 
+				</label>
+			</div>
+			<button type="submit"class="submit-button os">SUBMIT</button>
+		</form>
+	</section>
+</main>
+
+<%- include('../partials/footer') %>

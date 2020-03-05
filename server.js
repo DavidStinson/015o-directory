@@ -5,12 +5,13 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const session = require("express-session");
 const passport = require("passport");
-const methodOverride = require("method-override")
+const methodOverride = require("method-override");
 require("dotenv").config();
 
 const indexRouter = require("./routes/index");
 const networksRouter = require("./routes/networks");
 const usersRouter = require("./routes/users");
+const devicesRouter = require("./routes/devices");
 
 require("./config/database");
 require("./config/passport");
@@ -21,7 +22,7 @@ const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.use(methodOverride('_method'));
+app.use(methodOverride("_method"));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -46,6 +47,7 @@ app.use(function(req, res, next) {
 app.use("/", indexRouter);
 app.use("/networks", networksRouter);
 app.use("/users", usersRouter);
+app.use("/devices", devicesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

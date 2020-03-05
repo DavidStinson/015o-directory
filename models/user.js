@@ -25,10 +25,8 @@ const deviceSchema = new Schema(
 		deviceClass: String,
 		os: String,
     macAddress: String,
-		ipAddresses: String,
-		dnsName: String,
-		destInterface: String,
-		pathToDestPort: String,
+		ipAddress: String,
+		hostName: String,
   },
   {
     timestamps: true,

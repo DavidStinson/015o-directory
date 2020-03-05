@@ -1,75 +1,92 @@
-const dns = require("dns")
+const dns = require("dns");
+const cidrTools = require("cidr-tools");
 
 module.exports = {
   index,
-  new: newNetwork,
+  new: newDevice,
   create,
   show,
   delete: deleteOne,
 };
 
 function index(req, res) {
-  res.render("devicess/index", {
+  res.render("devices/index", {
     title: "Your Devices",
-    devicess: req.user.devices,
+    devices: req.user.devices,
   });
 }
 
-function newNetwork(req, res) {
-  res.render("devicess/new", {
+function newDevice(req, res) {
+  res.render("devices/new", {
     title: "Make a New Device",
     user: req.user,
   });
 }
 
 function create(req, res) {
-  req.body.fullNtwk = `${req.body.ntwkAddr}/${req.body.cidrMask}`;
+  let deviceBelongsToNtwk = null;
   let errorCode = null;
-  let errMatchNtwkName = null;
-  let errMatchNtwkFirstAddr = null;
-  let errMatchNtwkLastAddr = null;
-  let ipBlock = new Netmask(req.body.fullNtwk);
-  req.body.fullNtwk = `${ipBlock.base}/${req.body.cidrMask}`;
-  req.body.ntwkAddr = ipBlock.base;
-  req.body.broadcastAddr = ipBlock.broadcast;
-  req.body.firstAddr = ipBlock.first;
-  req.body.lastAddr = ipBlock.last;
-  req.body.ntwkSize = ipBlock.size;
-  req.body.subnetMask = ipBlock.mask;
+  let errMatchDeviceName = null;
+  req.body.macAddress = req.body.macAddress.toUpperCase();
+  if (req.user.local) {
+    dns.setServers(["10.0.0.20"]);
+    dns.reverse(req.body.ipAddress, (err, hostNames) => {
+      if (hostNames) {
+        req.body.hostName = hostNames[0];
+      }
+    });
+  }
   req.user.networks.forEach(network => {
-    if (cidrTools.overlap(network.fullNtwk, req.body.fullNtwk)) {
-      errorCode = 1;
-      errMatchNtwkName = network.friendlyName;
-      errMatchNtwkFirstAddr = network.firstAddr;
-      errMatchNtwkLastAddr = network.lastAddr;
-    }
-    if (req.body.friendlyName === network.friendlyName) {
-      errorCode = 2;
+    if (cidrTools.overlap(network.fullNtwk, req.body.ipAddress)) {
+      deviceBelongsToNtwk = true;
     }
   });
-  if (!errorCode) {
-    req.user.networks.push(req.body);
+  req.user.devices.forEach(device => {
+    if (req.body.ipAddress === device.ipAddress) {
+      errorCode = 1;
+      errMatchDeviceName = device.name;
+    }
+    if (req.body.name === device.name) {
+      errorCode = 2;
+    }
+    if (req.body.macAddress === device.macAddress) {
+      errorCode = 3;
+      errMatchDeviceName = device.name;
+    }
+  });
+  if (!errorCode && deviceBelongsToNtwk) {
+    req.user.devices.push(req.body);
     req.user.save(function(err) {
-      res.redirect(`/networks`);
+      res.redirect(`/devices`);
+    });
+  } else if (!deviceBelongsToNtwk) {
+    res.render("devices/error", {
+      errorMsg: `There is no network for this device to belong to! Please create a network containing ${req.body.ipAddress} first.`,
+      title: "Device Creation Error!",
     });
   } else if (errorCode === 1) {
-    res.render("networks/error", {
-      errorMsg: `This network overlaps an existing network: ${errMatchNtwkName} which is using address range ${errMatchNtwkFirstAddr} to ${errMatchNtwkLastAddr}`,
-      title: "Network Creation Error!",
+    res.render("devices/error", {
+      errorMsg: `The IP Address ${req.body.ipAddress} is already being used by ${errMatchDeviceName}, please create the device again using an available IP Address.`,
+      title: "Device Creation Error!",
+    });
+  } else if (errorCode === 2) {
+    res.render("devices/error", {
+      errorMsg: `A device with the name ${req.body.name} already exists, please create the device again using a unique name.`,
+      title: "Device Creation Error!",
     });
   } else {
-    res.render("s/error", {
-      errorMsg: `A network with the name ${req.body.friendlyName} already exists.`,
-      title: "Network Creation Error!",
+    res.render("devices/error", {
+      errorMsg: `The MAC Address ${req.body.macAddress} is already being used by ${errMatchDeviceName}, please create the device again using an available MAC Address.`,
+      title: "Device Creation Error!",
     });
   }
 }
 
 function show(req, res) {
-  let network = req.user.networks.id(req.params.ntwkId);
+  let device = req.user.devices.id(req.params.deviceId);
   res.render("devices/show", {
     title: `${device.name}`,
-    network,
+    device,
   });
 }
 

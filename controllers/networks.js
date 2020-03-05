@@ -76,6 +76,8 @@ function show(req, res) {
 
 function deleteOne(req, res) {
   req.user.networks.id(req.params.ntwkId).remove();
-  //req.user.networks.pull(req.params.ntwkId);
-  res.redirect("networks/");
+  req.user.save(function(err) {
+    console.log(`Removed!`);
+  });
+  res.redirect("/networks");
 }

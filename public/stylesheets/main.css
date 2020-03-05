@@ -27,6 +27,17 @@ a:visited {
   margin: 14px 7px 0px;
 }
 
+.new-item-container {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  margin-top: 15px;
+}
+
 .show-container {
   display: flex;
   flex-direction: column;
@@ -65,22 +76,21 @@ a:visited {
   justify-content: center;
 }
 
+#centered-page-content-column-box {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
+}
+
 #left-page-content-box {
   width: 90vw;
   display: flex;
   justify-content: left;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: auto;
-}
-
-#new-network-container {
-  width: 330px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
   margin: auto;
 }
 
@@ -97,7 +107,7 @@ a:visited {
 }
 
 .list-name {
-  grid-area: ntwk-name;
+  grid-area: list-name;
   justify-self: left;
   margin: 0;
   align-self: center;
@@ -106,7 +116,7 @@ a:visited {
 }
 
 .list-subhead {
-  grid-area: ntwk-full-addr;
+  grid-area: list-subhead;
   justify-self: left;
   margin: 0;
   align-self: center;
@@ -125,7 +135,7 @@ a:visited {
   height: 30px;
   width: 150px;
   justify-self: center;
-  grid-area: connect-interface;
+  grid-area: list-head-btn;
   margin: 0;
   color: whitesmoke;
   text-align: center;
@@ -222,6 +232,8 @@ nav {
 .head {
   font-size: 36px;
   flex-shrink: 1;
+  text-align: center;
+  margin: 10px auto 10px;
 }
 
 .subhead {
@@ -283,6 +295,7 @@ nav {
   font-weight: bold;
   border: 0;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /* logout */
@@ -354,6 +367,14 @@ nav {
   display: block;
   width: 275px;
   height: 36px;
+  font-size: 24px;
+}
+
+/* dropdown inputs */
+.large-input-dropdown {
+  display: block;
+  width: 283px;
+  height: 44px;
   font-size: 24px;
 }
 
