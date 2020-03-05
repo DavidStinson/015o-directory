@@ -1,26 +1,50 @@
 <%- include('../partials/header') %> 
-<%- include('../partials/userNav') %>
+<%- include('../partials/userBackNtwk') %>
 
 <main id="centered-page-content-box">
   <section class="show-container container">
-		<div class="show-container">
-			<p class="show-data-label os">NETWORK NAME</p>
-			<h2 class="show-data mono"><%= user.name %> </h2>
+		<div class="data-container">
+			<p class="show-data-label-center os">NETWORK NAME</p>
+			<h2 class="show-data-center mono"><%= network.friendlyName %> </h2>
 		</div>
-		<div class="show-container">
-			<p class="show-data-label os">EMAIL</p>
-			<h2 class="show-data mono"><%= user.email %> </h2>
+		<div class="data-container">
+			<p class="show-data-label os">FULL NETWORK</p>
+			<h2 class="show-data mono"><%= network.fullNtwk %> </h2>
 		</div>
-		<div class="show-container">
-			<p class="show-data-label os">015o.net ADMIN</p>
-			<h2 class="show-data mono"><%= user.local ? "Yes" : "No" %> </h2>
+		<div class="data-container">
+			<p class="show-data-label os">NETWORK ADDRESS</p>
+			<h2 class="show-data mono"><%= network.ntwkAddr %> </h2>
 		</div>
-		<div class="show-container">
-			<p class="show-data-label os">AUTHENTICATION AGENT</p>
-			<h2 class="show-data mono"><%= user.oAuthProvider %></h2>
+		<div class="data-container">
+			<p class="show-data-label os">FIRST ADDRESS</p>
+			<h2 class="show-data mono"><%= network.firstAddr %> </h2>
 		</div>
-		<form action="/users/logout" class="button-container-lrg">
-			<button type="submit" class="logout-button os">LOGOUT</button>
+		<div class="data-container">
+			<p class="show-data-label os">LAST ADDRESS</p>
+			<h2 class="show-data mono"><%= network.lastAddr %></h2>
+		</div>
+		<div class="data-container">
+			<p class="show-data-label os">BROADCAST ADDRESS</p>
+			<h2 class="show-data mono"><%= network.broadcastAddr %> </h2>
+		</div>
+		<div class="data-container">
+			<p class="show-data-label os">SUBNET MASK</p>
+			<h2 class="show-data mono"><%= network.subnetMask %> </h2>
+		</div>
+		<div class="data-container">
+			<p class="show-data-label os">NETWORK SIZE</p>
+			<h2 class="show-data mono"><%= network.ntwkSize %> </h2>
+		</div>
+		<div class="data-container">
+			<p class="show-data-label os">VLAN</p>
+			<h2 class="show-data mono"><%= network.vLAN %></h2>
+		</div>
+		<form 
+			action="/networks/<%= network.id %>?_method=DELETE" 
+			method="POST" 
+			class="button-container-lrg"
+		>
+			<button type="submit" class="logout-button os">DELETE</button>
 		</form>
 	</section>
 </main>

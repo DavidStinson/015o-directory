@@ -20,7 +20,7 @@ router.get("/logout", isLoggedIn, function(req, res) {
 
 router.get("/:id", isLoggedIn, function(req, res) {
   titleValue = `${req.user.name}'s page`;
-  res.render(`users/show`, { title: titleValue });
+  res.render("/users/show", { title: titleValue });
 });
 
 function isLoggedIn(req, res, next) {

@@ -20,12 +20,18 @@ a:visited {
   border: 4px whitesmoke solid;
 }
 
-.network-container,
+.list-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin: 14px 7px 0px;
+}
+
 .show-container {
   display: flex;
   flex-direction: column;
-  margin: 10px;
   align-content: center;
+  margin-top: 15px;
 }
 
 .button-container-lrg {
@@ -142,7 +148,7 @@ a:visited {
   flex-grow: 2;
 }
 
-.show-container,
+.data-container,
 .input-container {
   margin-bottom: 10px;
 }
@@ -235,6 +241,22 @@ nav {
   margin-bottom: 1px;
   font-size: 12px;
   font-weight: bold;
+  margin-top: 0;
+}
+
+.show-data-center {
+  text-align: center;
+  margin: 0;
+  font-size: 28px;
+  background-color: #1f1e23;
+}
+
+.show-data-label-center {
+  text-align: center;
+  margin: 0;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #1f1e23;
 }
 
 /* BUTTONS */

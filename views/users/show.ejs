@@ -12,19 +12,19 @@
 		<% } else { %>
 			<h2 class="user-avatar-emoji-lrg">👤</h2>
 		<% } %>
-		<div class="show-container">
+		<div class="data-container">
 			<p class="show-data-label os">NAME</p>
 			<h2 class="show-data os"><%= user.name %> </h2>
 		</div>
-		<div class="show-container">
+		<div class="data-container">
 			<p class="show-data-label os">EMAIL</p>
 			<h2 class="show-data os"><%= user.email %> </h2>
 		</div>
-		<div class="show-container">
+		<div class="data-container">
 			<p class="show-data-label os">015o.net ADMIN</p>
 			<h2 class="show-data os"><%= user.local ? "Yes" : "No" %> </h2>
 		</div>
-		<div class="show-container">
+		<div class="data-container">
 			<p class="show-data-label os">AUTHENTICATION AGENT</p>
 			<h2 class="show-data os"><%= user.oAuthProvider %></h2>
 		</div>
