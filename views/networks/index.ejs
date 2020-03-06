@@ -13,19 +13,29 @@
           href="/networks/<%= network._id %>" 
           class="list-subhead mono"
         ><%= network.fullNtwk %></a>
-        <form action="/networks/<%= network._id %>/connect">
-          <button 
-            class="list-head-btn os" 
-            type="submit"
-          >Connect device</button>
-        </form>
       </div>
       <% devices.forEach(device => { %>
-       
-      <% }) %>
-      <div class="list-item">
+        <% if (cidrTools.overlap(network.fullNtwk, device.ipAddress)) { %>
+          <div class="list-item">
+            <% if (device.hostName) { %>
+              <a 
+                class="list-item-head"
+                href="http://<%= device.hostName %>"
+              ><h2 class="list-item-head mono"><%= device.hostName %></h2></a>
+            <% } else { %>
+              <a 
+                class="list-item-head"
+                href="/devices/<%= device._id %>"
+              ><h2 class="list-item-head mono"><%= device.name %></h2></a>
+            <% } %>
 
-			</div>
+            <a 
+              class="list-item-sub"
+              href="/devices/<%= device._id %>"
+            ><p class="list-item-sub mono"><%= device.ipAddress %></p></a>
+          </div>
+        <% } %>
+      <% }) %>
     </section>
   <% }) %>
 </main>

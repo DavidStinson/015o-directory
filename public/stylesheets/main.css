@@ -123,8 +123,12 @@ a:visited {
   text-decoration: none;
 }
 .list-name:visited,
-.list-subhead:visited {
+.list-subhead:visited,
+.nav-btn-container:visited,
+.list-item-head:visited,
+.list-item-sub:visited {
   color: whitesmoke;
+  text-decoration: none;
 }
 
 /* list header button */
@@ -169,6 +173,27 @@ a:visited {
 
 /* list items*/
 
+.list-item {
+  border-top: #dcdcdc 1px solid;
+  margin-top: 3px;
+}
+
+.list-item-head {
+  font-size: 20px;
+  margin: 10px 0 5px;
+  color: whitesmoke;
+  text-decoration: none;
+  text-align: right;
+}
+
+.list-item-sub {
+  font-size: 16px;
+  margin: 0px 0px 3px;
+  color: whitesmoke;
+  text-decoration: none;
+  text-align: right;
+}
+
 /* forms */
 
 .form-container {
@@ -204,10 +229,6 @@ nav {
   flex-basis: auto;
   color: whitesmoke;
   text-decoration: none;
-}
-
-.nav-btn-container:visited {
-  color: whitesmoke;
 }
 
 .nav-btn {
