@@ -29,7 +29,6 @@ passport.use(
           }
         } else {
           // A new user via Google OAuth!
-          console.log(profile);
           var newUser = new User({
             name: profile.displayName,
             avatar: profile.photos[0].value,
@@ -67,7 +66,6 @@ passport.use(
         if (user) done(null, user);
         // if a user is new add them to the db
         if (!user) {
-          console.log(profile);
           var newUser = new User({
             name: profile.name.firstName,
             avatar: null,

@@ -49,6 +49,21 @@
 			</div>
 			<button type="submit" class="update-button os">UPDATE</button>
 		</form>
+		<form action="/devices/<%= device._id %>/interfaces/new" method="GET">
+			<button type="submit" class="update-button os">Add Interface</button>
+		</form>
+		<% if (interfaces.length) { %>
+			<% interfaces.forEach((interface) => { %>
+				<div class="data-container-dark">
+					<h2 class="show-data-center mono"><%= interface.speed %></h2>
+					<p class="show-data-label-center os">Interface Speed</p>
+				</div>
+			<% }); %>
+		<% } else { %>
+			<div class="data-container-dark">
+				<h2 class="show-data-center mono">No Interfaces</h2>
+			</div>
+		<% } %>
 	</section>
 </main>
 

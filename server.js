@@ -12,6 +12,7 @@ const indexRouter = require("./routes/index");
 const networksRouter = require("./routes/networks");
 const usersRouter = require("./routes/users");
 const devicesRouter = require("./routes/devices");
+const interfacesRouter = require("./routes/interfaces");
 
 require("./config/database");
 require("./config/passport");
@@ -48,6 +49,7 @@ app.use("/", indexRouter);
 app.use("/networks", networksRouter);
 app.use("/users", usersRouter);
 app.use("/devices", devicesRouter);
+app.use("/", interfacesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

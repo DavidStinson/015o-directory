@@ -1,0 +1,30 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navUserShowNtwkBackDev') %>
+
+<main id="bounding-box">
+	<section class="new-item-container container">
+		<h1 class="head">Add an interface</h1>
+		<form 
+			action="/devices/<%= device._id %>/interfaces" 
+			method="POST" 
+			class="form-container"
+		>
+			<div class="input-container">
+				<label class="os">Interface Speed Class
+					<select 
+						name="speed"
+						class="mono large-input-dropdown"
+					>
+						<option value="100mbps">100mbps</option>
+						<option value="1gbps">1gbps</option>
+						<option value="10gbps">10gbps</option>
+						<option value="Wi-Fi">Wi-Fi</option>
+					</select>
+				</label>
+			</div>
+			<button type="submit"class="submit-button os">SUBMIT</button>
+		</form>
+	</section>
+</main>
+
+<%- include('../partials/footer') %>

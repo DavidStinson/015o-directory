@@ -204,9 +204,14 @@ a:visited {
   flex-grow: 2;
 }
 
+.data-container-dark
 .data-container,
 .input-container {
   margin-bottom: 10px;
+}
+
+.data-container-dark {
+  background-color: #1f1e23;
 }
 
 /* nav */
