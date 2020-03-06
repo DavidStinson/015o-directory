@@ -37,7 +37,9 @@
 
 # User Stories 👩‍💻👨‍💻
 
-David is frustrated he has to log into various devices to view all the IP devices on his local network and would like to centralize this data.
+David is frustrated he has to log into various devices to view all the IP devices on his local networks and would like to centralize this data.
+
+David would also like to view this data and enter more data in a mobile friendly way. 
 
 ---
 
