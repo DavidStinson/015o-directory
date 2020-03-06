@@ -372,10 +372,7 @@ nav {
 /* user */
 
 .user-avatar-emoji {
-  background-color: whitesmoke;
-  border-radius: 20px;
   font-size: 24px;
-  text-align: center;
 }
 
 .user-avatar-emoji-lrg {
