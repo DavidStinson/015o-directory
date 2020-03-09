@@ -97,16 +97,12 @@ function show(req, res) {
 
 function deleteOne(req, res) {
   req.user.devices.id(req.params.deviceId).remove();
-  req.user.save(function(err) {
-  });
+  req.user.save(function(err) {});
   res.redirect("/devices");
 }
 
 function update(req, res) {
-  let device = req.user.devices.id(req.params.deviceId);
-  device.ipAddress = req.body.ipAddress;
-	device.hostName = req.body.hostName;
-	req.user.networks.forEach(network => {
+  req.user.networks.forEach(network => {
     if (cidrTools.overlap(network.fullNtwk, req.body.ipAddress)) {
       deviceBelongsToNtwk = true;
     }
@@ -118,7 +114,9 @@ function update(req, res) {
     }
   });
   if (!errorCode && deviceBelongsToNtwk) {
-    req.user.devices.push(req.body);
+    let device = req.user.devices.id(req.params.deviceId);
+    device.ipAddress = req.body.ipAddress;
+    device.hostName = req.body.hostName;
     req.user.save(function(err) {
       res.redirect(`/devices`);
     });
@@ -130,12 +128,12 @@ function update(req, res) {
   } else {
     res.render("devices/error", {
       errorMsg: `The IP Address ${req.body.ipAddress} is already being used by ${errMatchDeviceName}, please create the device again using an available IP Address.`,
-      title: "Device Creation Error!",
+      title: "Device Update Error!",
     });
   }
 
   req.user.save(function(err) {
-		console.log(err)
+    console.log(err);
   });
   res.redirect("/devices");
 }
