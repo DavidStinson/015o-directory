@@ -119,7 +119,7 @@ function update(req, res) {
     device.ipAddress = req.body.ipAddress;
     device.hostName = req.body.hostName;
     req.user.save(function(err) {
-      res.redirect(`/devices`);
+      res.redirect("/devices");
     });
   } else if (!deviceBelongsToNtwk) {
     res.render("devices/error", {
