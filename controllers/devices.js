@@ -102,6 +102,7 @@ function deleteOne(req, res) {
 }
 
 function update(req, res) {
+  let errorCode = null;
   req.user.networks.forEach(network => {
     if (cidrTools.overlap(network.fullNtwk, req.body.ipAddress)) {
       deviceBelongsToNtwk = true;
