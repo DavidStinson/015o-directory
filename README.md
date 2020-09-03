@@ -61,7 +61,7 @@ David would also like to view this data and enter more data in a mobile friendly
 
 ---
 
-# Credits
+# Credits 
 
 - 015o Directory uses the Open Sans font designed by Steve Matteson. Found at: [Google Fonts](https://fonts.google.com/specimen/Open+Sans).
 - 015o Directory uses the Bitstream Vera Sans Mono font designed by Jim Lyles and adapted to monospace by Sue Zafarana of Bitstream, Inc. Released in partnership with the Gnome Foundation. Found at: [Gnome.org](https://www.gnome.org/fonts/).
