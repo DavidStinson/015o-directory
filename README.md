@@ -51,13 +51,12 @@ David would also like to view this data and enter more data in a mobile friendly
 - OAuth (Sign In With Apple / Google)
 - Heroku
 - Node.js
-- Express
+- Express/ejs view engine
 - MongoDB/Mongoose
 - Ruby (jwt gem)
 - [Trello](https://trello.com/b/de9phg99/015odirectory)
 - git
 - GitHub
-- HTML
 - CSS
 
 ---
